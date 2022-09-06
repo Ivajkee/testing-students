@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import lombok.Data;
 import lombok.SneakyThrows;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -15,9 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Data
 public class QuestionDaoSimple implements QuestionDao {
-    private final List<Question> questions = new ArrayList<>();
+    private final List<Question> questions;
 
     @SneakyThrows
     public QuestionDaoSimple(Config config) {
@@ -26,6 +24,7 @@ public class QuestionDaoSimple implements QuestionDao {
         CsvSchema csvSchema = CsvSchema.emptySchema().withHeader();
         ObjectReader objectReader = csvMapper.readerFor(Question.class).with(csvSchema);
         MappingIterator<Question> questionMappingIterator = objectReader.readValues(resource.getInputStream());
+        questions = new ArrayList<>();
         questions.addAll(questionMappingIterator.readAll());
     }
 
