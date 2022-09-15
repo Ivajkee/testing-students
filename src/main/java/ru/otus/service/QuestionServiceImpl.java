@@ -1,13 +1,13 @@
 package ru.otus.service;
 
-import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import ru.otus.dao.QuestionDao;
 import ru.otus.domain.Question;
 import ru.otus.exception.QuestionNotFoundException;
 
 import java.util.List;
 
-@Data
+@RequiredArgsConstructor
 public class QuestionServiceImpl implements QuestionService {
     private final QuestionDao questionDao;
 

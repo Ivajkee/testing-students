@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import lombok.Data;
 import lombok.SneakyThrows;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -14,7 +13,6 @@ import ru.otus.domain.Question;
 import java.util.List;
 import java.util.Optional;
 
-@Data
 public class QuestionDaoSimple implements QuestionDao {
     private final List<Question> questions;
 
